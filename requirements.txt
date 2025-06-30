@@ -1,5 +1,4 @@
 fastapi
-vercel-fastapi
 pydantic
 pandas
 faiss-cpu
