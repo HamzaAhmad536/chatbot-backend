@@ -27,8 +27,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://hamzaahmad536.github.io",
-        "https://snazzy-profiterole-8a7a42.netlify.app",
+        "https://hamzaahmad536.github.io"  # This covers all paths under the domain
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -255,14 +254,21 @@ class EntityExtractor:
                     entities[entity_type] = matches[0] if isinstance(matches[0], str) else matches[0][0]
         return entities
 
+# Helper to get absolute path for data files
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+HALAWA_DOCS_PATH = os.path.join(BASE_DIR, 'halawa_docs.csv')
+HALAWA_PRODUCTS_PATH = os.path.join(BASE_DIR, 'halawawax_products.csv')
+HALAWA_INDEX_PATH = os.path.join(BASE_DIR, 'halawa_index.faiss')
+
 # Initialize components
 try:
     # Get the directory where the script is located
     script_dir = os.path.dirname(os.path.abspath(__file__))
     
     # Construct absolute paths for the files
-    docs_path = os.path.join(script_dir, 'halawa_docs.csv')
-    index_path = os.path.join(script_dir, 'halawa_index.faiss')
+    docs_path = HALAWA_DOCS_PATH
+    index_path = HALAWA_INDEX_PATH
     
     print(f"Looking for files in: {script_dir}")
     df = pd.read_csv(docs_path)
@@ -736,6 +742,6 @@ async def root():
     """Root endpoint"""
     return {"message": "Welcome to Halawa Wax AI Backend v2.0"}
 
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run(app, host="0.0.0.0", port=8000) 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000) 
