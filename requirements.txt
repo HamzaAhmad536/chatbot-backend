@@ -1,0 +1,8 @@
+fastapi
+vercel-fastapi
+pydantic
+pandas
+faiss-cpu
+sentence-transformers
+openai
+python-dotenv 
