@@ -3,4 +3,6 @@
   command = "pip install -r requirements.txt"
 
 [functions]
-  python_runtime = "python3.9" 
+  [functions.python_runtime]
+  external_node_modules = []  # Add dependencies if needed
+  runtime_version = "3.9"    # Explicitly set Python version (optional)
