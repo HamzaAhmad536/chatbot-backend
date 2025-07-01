@@ -1,8 +1,0 @@
-[build]
-  functions = "netlify/functions"
-  command = "pip install -r requirements.txt"
-
-[functions]
-  [functions.python_runtime]
-  external_node_modules = []  # Add dependencies if needed
-  runtime_version = "3.9"    # Explicitly set Python version (optional)
